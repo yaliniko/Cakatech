@@ -1,0 +1,448 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-06-23 20:45+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: apps/competitions/models.py:12
+msgid "yarışma adı"
+msgstr "competition name"
+
+#: apps/competitions/models.py:13
+msgid "sezon"
+msgstr "season"
+
+#: apps/competitions/models.py:14 apps/competitions/models.py:36
+msgid "tarih"
+msgstr "date"
+
+#: apps/competitions/models.py:15
+msgid "yer"
+msgstr "location"
+
+#: apps/competitions/models.py:16 apps/competitions/models.py:35
+#: apps/sponsors/models.py:26
+msgid "açıklama"
+msgstr "description"
+
+#: apps/competitions/models.py:18
+msgid "sonuç / derece"
+msgstr "result / rank"
+
+#: apps/competitions/models.py:19
+msgid "Örn. Bölge 3.'lüğü, Finalist"
+msgstr "e.g. Regional 3rd place, Finalist"
+
+#: apps/competitions/models.py:21 apps/core/models.py:94
+msgid "görsel"
+msgstr "image"
+
+#: apps/competitions/models.py:24
+msgid "Yarışma"
+msgstr "Competition"
+
+#: apps/competitions/models.py:25
+msgid "Yarışmalar"
+msgstr "Competitions"
+
+#: apps/competitions/models.py:34 apps/core/models.py:92
+msgid "başlık"
+msgstr "title"
+
+#: apps/competitions/models.py:37
+msgid "görsel / ikon"
+msgstr "image / icon"
+
+#: apps/competitions/models.py:40 templates/core/home.html:44
+msgid "Başarı"
+msgstr "Achievement"
+
+#: apps/competitions/models.py:41
+msgid "Başarılar"
+msgstr "Achievements"
+
+#: apps/competitions/urls.py:11
+msgid "yarismalar/"
+msgstr "competitions/"
+
+#: apps/contact/forms.py:16 apps/sponsors/forms.py:16
+msgid "Ad Soyad"
+msgstr "Full name"
+
+#: apps/contact/forms.py:17 apps/sponsors/forms.py:18
+msgid "E-posta"
+msgstr "E-mail"
+
+#: apps/contact/forms.py:18 apps/sponsors/forms.py:19
+msgid "Telefon (opsiyonel)"
+msgstr "Phone (optional)"
+
+#: apps/contact/forms.py:19
+msgid "Konu"
+msgstr "Subject"
+
+#: apps/contact/forms.py:20
+msgid "Mesajınız"
+msgstr "Your message"
+
+#: apps/contact/models.py:12 apps/sponsors/models.py:39 apps/team/models.py:21
+msgid "ad soyad"
+msgstr "full name"
+
+#: apps/contact/models.py:13 apps/core/models.py:39 apps/sponsors/models.py:41
+msgid "e-posta"
+msgstr "e-mail"
+
+#: apps/contact/models.py:14 apps/core/models.py:40 apps/sponsors/models.py:42
+msgid "telefon"
+msgstr "phone"
+
+#: apps/contact/models.py:15
+msgid "konu"
+msgstr "subject"
+
+#: apps/contact/models.py:16 apps/sponsors/models.py:43
+msgid "mesaj"
+msgstr "message"
+
+#: apps/contact/models.py:17 apps/sponsors/models.py:44
+msgid "okundu"
+msgstr "read"
+
+#: apps/contact/models.py:21
+msgid "İletişim Mesajı"
+msgstr "Contact Message"
+
+#: apps/contact/models.py:22
+msgid "İletişim Mesajları"
+msgstr "Contact Messages"
+
+#: apps/contact/urls.py:11
+msgid "iletisim/"
+msgstr "contact/"
+
+#: apps/contact/views.py:24
+msgid "Mesajınız alındı. En kısa sürede dönüş yapacağız."
+msgstr "Your message has been received. We will get back to you soon."
+
+#: apps/core/forms.py:22
+msgid "Spam tespit edildi."
+msgstr "Spam detected."
+
+#: apps/core/models.py:10
+msgid "oluşturulma"
+msgstr "created"
+
+#: apps/core/models.py:11
+msgid "güncellenme"
+msgstr "updated"
+
+#: apps/core/models.py:20
+msgid "sıra"
+msgstr "order"
+
+#: apps/core/models.py:21
+msgid "aktif"
+msgstr "active"
+
+#: apps/core/models.py:31
+msgid "site adı"
+msgstr "site name"
+
+#: apps/core/models.py:32
+msgid "slogan"
+msgstr "tagline"
+
+#: apps/core/models.py:33
+msgid "kısa tanıtım"
+msgstr "short intro"
+
+#: apps/core/models.py:35 apps/sponsors/models.py:20
+msgid "logo"
+msgstr "logo"
+
+#: apps/core/models.py:36
+msgid "favicon"
+msgstr "favicon"
+
+#: apps/core/models.py:41
+msgid "adres"
+msgstr "address"
+
+#: apps/core/models.py:44 apps/team/models.py:33
+msgid "Instagram"
+msgstr ""
+
+#: apps/core/models.py:45
+msgid "YouTube"
+msgstr ""
+
+#: apps/core/models.py:46 apps/team/models.py:34
+msgid "LinkedIn"
+msgstr ""
+
+#: apps/core/models.py:47
+msgid "X / Twitter"
+msgstr ""
+
+#: apps/core/models.py:49
+msgid "alt bilgi metni"
+msgstr "footer text"
+
+#: apps/core/models.py:52 apps/core/models.py:53
+msgid "Site Ayarları"
+msgstr "Site Settings"
+
+#: apps/core/models.py:82
+msgid "anahtar"
+msgstr "key"
+
+#: apps/core/models.py:85
+msgid "Şablonda kullanılan benzersiz anahtar (örn. home_hero)."
+msgstr "Unique key used in the template (e.g. home_hero)."
+
+#: apps/core/models.py:88
+msgid "etiket"
+msgstr "label"
+
+#: apps/core/models.py:90
+msgid "Bu bloğun ne olduğunu açıklayan ad (admin için)."
+msgstr "A name describing this block (for admin)."
+
+#: apps/core/models.py:93
+msgid "metin"
+msgstr "text"
+
+#: apps/core/models.py:97
+msgid "Sayfa Metni"
+msgstr "Page Text"
+
+#: apps/core/models.py:98
+msgid "Sayfa Metinleri"
+msgstr "Page Texts"
+
+#: apps/sponsors/forms.py:17
+msgid "Kurum / Firma"
+msgstr "Organization / Company"
+
+#: apps/sponsors/forms.py:21
+msgid "Nasıl destek olmak istersiniz?"
+msgstr "How would you like to support us?"
+
+#: apps/sponsors/models.py:13
+msgid "Platin"
+msgstr "Platinum"
+
+#: apps/sponsors/models.py:14
+msgid "Altın"
+msgstr "Gold"
+
+#: apps/sponsors/models.py:15
+msgid "Gümüş"
+msgstr "Silver"
+
+#: apps/sponsors/models.py:16
+msgid "Bronz"
+msgstr "Bronze"
+
+#: apps/sponsors/models.py:17
+msgid "Partner"
+msgstr "Partner"
+
+#: apps/sponsors/models.py:19
+msgid "sponsor adı"
+msgstr "sponsor name"
+
+#: apps/sponsors/models.py:21
+msgid "web sitesi"
+msgstr "website"
+
+#: apps/sponsors/models.py:23
+msgid "kategori"
+msgstr "category"
+
+#: apps/sponsors/models.py:29 templates/core/home.html:48
+msgid "Sponsor"
+msgstr "Sponsor"
+
+#: apps/sponsors/models.py:30
+msgid "Sponsorlar"
+msgstr "Sponsors"
+
+#: apps/sponsors/models.py:40
+msgid "kurum / firma"
+msgstr "organization / company"
+
+#: apps/sponsors/models.py:48
+msgid "Sponsorluk Başvurusu"
+msgstr "Sponsorship Inquiry"
+
+#: apps/sponsors/models.py:49
+msgid "Sponsorluk Başvuruları"
+msgstr "Sponsorship Inquiries"
+
+#: apps/sponsors/urls.py:11
+msgid "sponsor/"
+msgstr "sponsorship/"
+
+#: apps/sponsors/views.py:28
+msgid "Başvurunuz alındı. Teşekkürler, size dönüş yapacağız."
+msgstr "Your inquiry has been received. Thank you, we will get back to you."
+
+#: apps/team/models.py:13
+msgid "Kaptan"
+msgstr "Captain"
+
+#: apps/team/models.py:14
+msgid "Mentor"
+msgstr "Mentor"
+
+#: apps/team/models.py:15
+msgid "Mekanik"
+msgstr "Mechanical"
+
+#: apps/team/models.py:16
+msgid "Yazılım"
+msgstr "Software"
+
+#: apps/team/models.py:17
+msgid "Tasarım / CAD"
+msgstr "Design / CAD"
+
+#: apps/team/models.py:18
+msgid "Medya"
+msgstr "Media"
+
+#: apps/team/models.py:19
+msgid "İş Geliştirme"
+msgstr "Business Development"
+
+#: apps/team/models.py:22
+msgid "görev / unvan"
+msgstr "role / title"
+
+#: apps/team/models.py:24
+msgid "alt takım"
+msgstr "subteam"
+
+#: apps/team/models.py:30
+msgid "kısa biyografi"
+msgstr "short bio"
+
+#: apps/team/models.py:31
+msgid "fotoğraf"
+msgstr "photo"
+
+#: apps/team/models.py:37
+msgid "Üye"
+msgstr "Member"
+
+#: apps/team/models.py:38
+msgid "Üyeler"
+msgstr "Members"
+
+#: apps/team/urls.py:11
+msgid "takim/"
+msgstr "team/"
+
+#: templates/base.html:18
+msgid "İçeriğe geç"
+msgstr "Skip to content"
+
+#: templates/base.html:31
+msgid "Menü"
+msgstr "Menu"
+
+#: templates/base.html:36
+msgid "Ana Sayfa"
+msgstr "Home"
+
+#: templates/base.html:37 templates/team/team_list.html:3
+#: templates/team/team_list.html:5
+msgid "Takım & Üyeler"
+msgstr "Team & Members"
+
+#: templates/base.html:38 templates/competitions/competitions_list.html:3
+#: templates/competitions/competitions_list.html:5
+msgid "Yarışmalar & Başarılar"
+msgstr "Competitions & Achievements"
+
+#: templates/base.html:39 templates/core/home.html:17
+#: templates/core/home.html:100 templates/sponsors/sponsor_page.html:3
+#: templates/sponsors/sponsor_page.html:5
+msgid "Sponsor Ol"
+msgstr "Become a Sponsor"
+
+#: templates/base.html:40 templates/contact/contact.html:3
+#: templates/contact/contact.html:5 templates/core/home.html:101
+msgid "İletişim"
+msgstr "Contact"
+
+#: templates/base.html:91
+msgid "Tüm hakları saklıdır."
+msgstr "All rights reserved."
+
+#: templates/core/home.html:4
+msgid "FTC Robotik Takımı"
+msgstr "FTC Robotics Team"
+
+#: templates/core/home.html:11
+msgid "FIRST Tech Challenge Takımı"
+msgstr "FIRST Tech Challenge Team"
+
+#: templates/core/home.html:18
+msgid "Takımı Tanı"
+msgstr "Meet the Team"
+
+#: templates/core/home.html:32
+msgid "Biz Kimiz?"
+msgstr "Who Are We?"
+
+#: templates/core/home.html:40
+msgid "Takım Üyesi"
+msgstr "Team Members"
+
+#: templates/core/home.html:58
+msgid "Öne Çıkan Başarılarımız"
+msgstr "Our Highlighted Achievements"
+
+#: templates/core/home.html:72
+msgid "Tümünü Gör"
+msgstr "View All"
+
+#: templates/core/home.html:82
+msgid "Bizi Destekleyenler"
+msgstr "Our Supporters"
+
+#: templates/core/home.html:97
+msgid "Takımımıza destek olmak ister misiniz?"
+msgstr "Would you like to support our team?"
+
+#: templates/core/home.html:98
+msgid "Sponsorluk ve iş birliği için bizimle iletişime geçin."
+msgstr "Get in touch with us for sponsorship and collaboration."
+
+#: templates/partials/coming_soon.html:5
+msgid "Yakında"
+msgstr "Coming Soon"
+
+#: templates/partials/coming_soon.html:6
+msgid "Bu sayfa hazırlanıyor. Çok yakında burada olacağız!"
+msgstr "This page is under construction. We'll be here very soon!"
+
+#: templates/partials/coming_soon.html:7
+msgid "Ana Sayfa'ya dön"
+msgstr "Back to Home"

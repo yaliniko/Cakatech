@@ -1,0 +1,9 @@
+{% load i18n %}
+<section class="section placeholder">
+  <div class="container placeholder-inner">
+    <h1>{{ page_title }}</h1>
+    <p class="placeholder-badge">{% trans "Yakında" %}</p>
+    <p>{% trans "Bu sayfa hazırlanıyor. Çok yakında burada olacağız!" %}</p>
+    <a class="btn btn-ghost" href="{% url 'core:home' %}">{% trans "Ana Sayfa'ya dön" %}</a>
+  </div>
+</section>

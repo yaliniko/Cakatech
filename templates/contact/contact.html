@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "İletişim" %} — {{ site.site_name|default:"Çakatech" }}{% endblock %}
+{% block content %}
+  {% trans "İletişim" as page_title %}
+  {% include "partials/coming_soon.html" %}
+{% endblock %}

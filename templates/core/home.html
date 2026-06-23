@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{{ site.site_name|default:"Çakatech" }} — {% trans "FTC Robotik Takımı" %}{% endblock %}
+
+{% block content %}
+{# ---------- Hero ---------- #}
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-text">
+      <span class="hero-kicker">{% trans "FIRST Tech Challenge Takımı" %}</span>
+      <h1>{% if blocks.home_hero.title %}{{ blocks.home_hero.title }}{% else %}{{ site.site_name|default:"Çakatech" }}{% endif %}</h1>
+      <p class="hero-lead">
+        {% if blocks.home_hero.body %}{{ blocks.home_hero.body }}{% else %}{{ site.tagline }}{% endif %}
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="{% url 'sponsors:page' %}">{% trans "Sponsor Ol" %}</a>
+        <a class="btn btn-ghost" href="{% url 'team:list' %}">{% trans "Takımı Tanı" %}</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <img src="{% if site.logo %}{{ site.logo.url }}{% else %}{% static 'img/logo.jpg' %}{% endif %}"
+           alt="{{ site.site_name }}" class="hero-logo">
+    </div>
+  </div>
+</section>
+
+{# ---------- Hakkımızda + istatistik ---------- #}
+<section class="section">
+  <div class="container about-grid">
+    <div class="about-text">
+      <h2>{% if blocks.home_about.title %}{{ blocks.home_about.title }}{% else %}{% trans "Biz Kimiz?" %}{% endif %}</h2>
+      <p>
+        {% if blocks.home_about.body %}{{ blocks.home_about.body|linebreaksbr }}{% else %}{{ site.about_short }}{% endif %}
+      </p>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">{{ member_count }}</span>
+        <span class="stat-label">{% trans "Takım Üyesi" %}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{{ achievements|length }}</span>
+        <span class="stat-label">{% trans "Başarı" %}</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">{{ sponsors|length }}</span>
+        <span class="stat-label">{% trans "Sponsor" %}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# ---------- Öne çıkan başarılar ---------- #}
+{% if achievements %}
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">{% trans "Öne Çıkan Başarılarımız" %}</h2>
+    <div class="card-grid">
+      {% for a in achievements %}
+        <article class="card">
+          {% if a.image %}<img src="{{ a.image.url }}" alt="{{ a.title }}" class="card-img">{% endif %}
+          <div class="card-body">
+            <h3>{{ a.title }}</h3>
+            {% if a.date %}<span class="card-meta">{{ a.date|date:"Y" }}</span>{% endif %}
+            <p>{{ a.description }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="section-cta">
+      <a class="btn btn-ghost" href="{% url 'competitions:list' %}">{% trans "Tümünü Gör" %}</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# ---------- Sponsorlar ---------- #}
+{% if sponsors %}
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">{% trans "Bizi Destekleyenler" %}</h2>
+    <div class="sponsor-strip">
+      {% for s in sponsors %}
+        {% if s.url %}<a href="{{ s.url }}" target="_blank" rel="noopener" class="sponsor-item">{% else %}<span class="sponsor-item">{% endif %}
+          {% if s.logo %}<img src="{{ s.logo.url }}" alt="{{ s.name }}">{% else %}<span class="sponsor-name">{{ s.name }}</span>{% endif %}
+        {% if s.url %}</a>{% else %}</span>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# ---------- Alt CTA ---------- #}
+<section class="cta-band">
+  <div class="container cta-inner">
+    <h2>{% trans "Takımımıza destek olmak ister misiniz?" %}</h2>
+    <p>{% trans "Sponsorluk ve iş birliği için bizimle iletişime geçin." %}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{% url 'sponsors:page' %}">{% trans "Sponsor Ol" %}</a>
+      <a class="btn btn-ghost" href="{% url 'contact:contact' %}">{% trans "İletişim" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

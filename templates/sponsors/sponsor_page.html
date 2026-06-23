@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Sponsor Ol" %} — {{ site.site_name|default:"Çakatech" }}{% endblock %}
+{% block content %}
+  {% trans "Sponsor Ol" as page_title %}
+  {% include "partials/coming_soon.html" %}
+{% endblock %}
