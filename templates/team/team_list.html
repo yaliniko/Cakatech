@@ -1,7 +1,49 @@
 {% extends "base.html" %}
 {% load i18n %}
+
 {% block title %}{% trans "Takım & Üyeler" %} — {{ site.site_name|default:"Çakatech" }}{% endblock %}
+
 {% block content %}
-  {% trans "Takım & Üyeler" as page_title %}
-  {% include "partials/coming_soon.html" %}
+<div class="page-header">
+  <div class="container animate-on-scroll">
+    <h1 class="page-title text-gradient">{% trans "Takım & Üyeler" %}</h1>
+    <p class="page-desc">{% trans "Projelerimizi hayata geçiren, tasarımından yazılımına kadar omuz omuza çalışan o harika ekiple tanışın." %}</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    {% if not groups %}
+      <div class="glass-panel" style="padding: 60px; text-align: center;">
+        <h3 style="color: var(--text-muted);">{% trans "Henüz üye eklenmemiş." %}</h3>
+      </div>
+    {% else %}
+      {% for group in groups %}
+        <div class="team-group animate-on-scroll">
+          <h2 class="team-group-title">{{ group.label }}</h2>
+          <div class="card-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));">
+            {% for member in group.members %}
+              <article class="member-card glass-panel">
+                <div class="member-photo-wrap">
+                  {% if member.photo %}
+                    <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="member-photo">
+                  {% else %}
+                    <div class="member-photo" style="background: var(--bg-deep); display:flex; align-items:center; justify-content:center; color: var(--text-muted);">No Foto</div>
+                  {% endif %}
+                </div>
+                <h3 class="member-name">{{ member.name }}</h3>
+                {% if member.role %}<p class="member-role">{{ member.role }}</p>{% endif %}
+                {% if member.bio %}<p class="member-bio">{{ member.bio }}</p>{% endif %}
+                <div class="member-social">
+                  {% if member.instagram_url %}<a href="{{ member.instagram_url }}" target="_blank" rel="noopener">IG</a>{% endif %}
+                  {% if member.linkedin_url %}<a href="{{ member.linkedin_url }}" target="_blank" rel="noopener">IN</a>{% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</section>
 {% endblock %}

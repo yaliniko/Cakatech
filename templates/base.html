@@ -11,21 +11,23 @@
   {% else %}
     <link rel="icon" href="{% static 'img/logo.jpg' %}">
   {% endif %}
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}?v=2">
   {% block extra_head %}{% endblock %}
 </head>
 <body>
-  <a class="skip-link" href="#main">{% trans "İçeriğe geç" %}</a>
+  <a class="skip-link" href="#main" style="position: absolute; top: -999px; left: -999px;">{% trans "İçeriğe geç" %}</a>
 
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="{% url 'core:home' %}">
-        {% if site.logo %}
-          <img src="{{ site.logo.url }}" alt="{{ site.site_name }}" class="brand-logo">
-        {% else %}
-          <img src="{% static 'img/logo.jpg' %}" alt="{{ site.site_name }}" class="brand-logo">
-        {% endif %}
-        <span class="brand-name">{{ site.site_name|default:"Çakatech" }}</span>
+        <div class="brand-logo-wrapper" style="width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid var(--brand);">
+          {% if site.logo %}
+            <img src="{{ site.logo.url }}" alt="{{ site.site_name }}" style="width:100%;height:100%;object-fit:cover;">
+          {% else %}
+            <img src="{% static 'img/logo.jpg' %}" alt="{{ site.site_name }}" style="width:100%;height:100%;object-fit:cover;">
+          {% endif %}
+        </div>
+        <span class="brand-name">{{ site.site_name|default:"Çakatech" }} <span class="brand-no">#25160</span></span>
       </a>
 
       <button class="nav-toggle" aria-label="{% trans 'Menü' %}" aria-expanded="false">
@@ -34,10 +36,10 @@
 
       <nav class="site-nav" id="site-nav">
         <a href="{% url 'core:home' %}" {% if request.resolver_match.view_name == 'core:home' %}class="active"{% endif %}>{% trans "Ana Sayfa" %}</a>
-        <a href="{% url 'team:list' %}">{% trans "Takım & Üyeler" %}</a>
-        <a href="{% url 'competitions:list' %}">{% trans "Yarışmalar & Başarılar" %}</a>
-        <a href="{% url 'sponsors:page' %}">{% trans "Sponsor Ol" %}</a>
-        <a href="{% url 'contact:contact' %}">{% trans "İletişim" %}</a>
+        <a href="{% url 'team:list' %}" {% if request.resolver_match.view_name == 'team:list' %}class="active"{% endif %}>{% trans "Takım & Üyeler" %}</a>
+        <a href="{% url 'competitions:list' %}" {% if request.resolver_match.view_name == 'competitions:list' %}class="active"{% endif %}>{% trans "Yarışmalar & Başarılar" %}</a>
+        <a href="{% url 'sponsors:page' %}" {% if request.resolver_match.view_name == 'sponsors:page' %}class="active"{% endif %}>{% trans "Sponsor Ol" %}</a>
+
 
         {# Dil değiştirici — yalnız birden fazla dil aktifse görünür #}
         {% get_available_languages as LANGS %}
@@ -71,26 +73,41 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="container footer-inner animate-on-scroll">
       <div class="footer-brand">
-        <img src="{% if site.logo %}{{ site.logo.url }}{% else %}{% static 'img/logo.jpg' %}{% endif %}"
-             alt="{{ site.site_name }}" class="footer-logo">
+        {% if site.logo %}
+          <img src="{{ site.logo.url }}" alt="{{ site.site_name }}" class="footer-logo">
+        {% else %}
+          <img src="{% static 'img/logo.jpg' %}" alt="{{ site.site_name }}" class="footer-logo">
+        {% endif %}
         <p>{{ site.footer_text|default:site.tagline }}</p>
       </div>
-      <div class="footer-contact">
-        {% if site.email %}<p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>{% endif %}
-        {% if site.phone %}<p>{{ site.phone }}</p>{% endif %}
-        {% if site.address %}<p>{{ site.address }}</p>{% endif %}
+      <div class="footer-nav">
+        <h4 class="footer-title">{% trans "Hızlı Menü" %}</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'team:list' %}">{% trans "Takım & Üyeler" %}</a></li>
+          <li><a href="{% url 'competitions:list' %}">{% trans "Yarışmalar" %}</a></li>
+          <li><a href="{% url 'sponsors:page' %}">{% trans "Sponsor Ol" %}</a></li>
+
+        </ul>
       </div>
-      <div class="footer-social">
-        {% if site.instagram_url %}<a href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
-        {% if site.youtube_url %}<a href="{{ site.youtube_url }}" target="_blank" rel="noopener">YouTube</a>{% endif %}
-        {% if site.linkedin_url %}<a href="{{ site.linkedin_url }}" target="_blank" rel="noopener">LinkedIn</a>{% endif %}
-        {% if site.twitter_url %}<a href="{{ site.twitter_url }}" target="_blank" rel="noopener">X</a>{% endif %}
+      <div class="footer-contact-info">
+        <h4 class="footer-title">{% trans "İletişim" %}</h4>
+        <ul class="footer-links">
+          {% if site.email %}<li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>{% endif %}
+          {% if site.phone %}<li>{{ site.phone }}</li>{% endif %}
+          {% if site.address %}<li>{{ site.address }}</li>{% endif %}
+        </ul>
+        <div class="footer-social" style="margin-top: 16px;">
+          {% if site.instagram_url %}<a href="{{ site.instagram_url }}" target="_blank" rel="noopener" class="social-icon">IG</a>{% endif %}
+          {% if site.youtube_url %}<a href="{{ site.youtube_url }}" target="_blank" rel="noopener" class="social-icon">YT</a>{% endif %}
+          {% if site.linkedin_url %}<a href="{{ site.linkedin_url }}" target="_blank" rel="noopener" class="social-icon">IN</a>{% endif %}
+          {% if site.twitter_url %}<a href="{{ site.twitter_url }}" target="_blank" rel="noopener" class="social-icon">X</a>{% endif %}
+        </div>
       </div>
     </div>
     <div class="container footer-bottom">
-      <p>&copy; {% now "Y" %} {{ site.site_name|default:"Çakatech" }}. {% trans "Tüm hakları saklıdır." %}</p>
+      <p>&copy; {% now "Y" %} {{ site.site_name|default:"Çakatech" }} #25160. {% trans "Tüm hakları saklıdır." %}</p>
     </div>
   </footer>
 

@@ -1,7 +1,97 @@
 {% extends "base.html" %}
 {% load i18n %}
+
 {% block title %}{% trans "Sponsor Ol" %} — {{ site.site_name|default:"Çakatech" }}{% endblock %}
+
 {% block content %}
-  {% trans "Sponsor Ol" as page_title %}
-  {% include "partials/coming_soon.html" %}
+<div class="page-header">
+  <div class="container animate-on-scroll">
+    <h1 class="page-title text-gradient">{% trans "Bize Katılın" %}</h1>
+    <p class="page-desc">{% trans "Geleceğin mühendisleri ve liderlerine destek olun. Birlikte daha büyük başarılara imza atalım." %}</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    
+    {% if sponsors %}
+    <div class="animate-on-scroll" style="margin-bottom: 100px;">
+      <h2 class="section-title">{% trans "Mevcut Destekçilerimiz" %}</h2>
+      <div class="sponsor-strip">
+        {% for s in sponsors %}
+          {% if s.url %}<a href="{{ s.url }}" target="_blank" rel="noopener" class="sponsor-item">{% else %}<span class="sponsor-item">{% endif %}
+            {% if s.logo %}<img src="{{ s.logo.url }}" alt="{{ s.name }}">{% else %}<span class="sponsor-name">{{ s.name }}</span>{% endif %}
+          {% if s.url %}</a>{% else %}</span>{% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="form-layout animate-on-scroll">
+      <div class="form-info-box glass-panel">
+        <h3 style="font-size: 2rem; margin-bottom: 24px;">{% trans "Sponsorluk Başvurusu" %}</h3>
+        <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem;">{% trans "Takımımıza finansal destek sağlayabilir, ekipman bağışlayabilir veya bilgi birikiminizle mentorluk yapabilirsiniz. Formu doldurun, sizinle tanışalım!" %}</p>
+        
+        <div class="info-item">
+          <h4>{% trans "Sponsorluk Kategorileri" %}</h4>
+          <ul style="color: var(--text-muted); list-style-position: inside; margin-top: 10px;">
+            <li style="margin-bottom: 8px;"><strong>{% trans "Platin:" %}</strong> {% trans "Ana sponsorluk, robot üzerinde dev logo." %}</li>
+            <li style="margin-bottom: 8px;"><strong>{% trans "Altın:" %}</strong> {% trans "Tişört ve robotta görünürlük." %}</li>
+            <li style="margin-bottom: 8px;"><strong>{% trans "Gümüş/Bronz:" %}</strong> {% trans "Web sitesi ve sosyal medya." %}</li>
+            <li><strong>{% trans "Partner:" %}</strong> {% trans "Hizmet veya ürün desteği." %}</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="glass-panel" style="padding: 40px;">
+        <form method="post" action="." class="custom-form">
+          {% csrf_token %}
+          
+          {{ form.non_field_errors }}
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+              <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+              {{ form.name }}
+              {{ form.name.errors }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.organization.id_for_label }}">{{ form.organization.label }}</label>
+              {{ form.organization }}
+              {{ form.organization.errors }}
+            </div>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+              {{ form.phone }}
+              {{ form.phone.errors }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+            {{ form.message }}
+            {{ form.message.errors }}
+          </div>
+
+          <div style="display: none;">
+            {{ form.honeypot }}
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 18px;">
+            {% trans "Başvuruyu Gönder" %}
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
 {% endblock %}

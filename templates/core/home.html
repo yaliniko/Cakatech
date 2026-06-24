@@ -7,9 +7,9 @@
 {# ---------- Hero ---------- #}
 <section class="hero">
   <div class="container hero-inner">
-    <div class="hero-text">
-      <span class="hero-kicker">{% trans "FIRST Tech Challenge Takımı" %}</span>
-      <h1>{% if blocks.home_hero.title %}{{ blocks.home_hero.title }}{% else %}{{ site.site_name|default:"Çakatech" }}{% endif %}</h1>
+    <div class="hero-text animate-on-scroll">
+      <span class="hero-kicker">{% trans "FIRST Tech Challenge Takımı" %} #25160</span>
+      <h1 class="hero-title text-gradient">{% if blocks.home_hero.title %}{{ blocks.home_hero.title }}{% else %}{{ site.site_name|default:"Çakatech" }}{% endif %}</h1>
       <p class="hero-lead">
         {% if blocks.home_hero.body %}{{ blocks.home_hero.body }}{% else %}{{ site.tagline }}{% endif %}
       </p>
@@ -18,34 +18,42 @@
         <a class="btn btn-ghost" href="{% url 'team:list' %}">{% trans "Takımı Tanı" %}</a>
       </div>
     </div>
-    <div class="hero-art">
-      <img src="{% if site.logo %}{{ site.logo.url }}{% else %}{% static 'img/logo.jpg' %}{% endif %}"
-           alt="{{ site.site_name }}" class="hero-logo">
+    <div class="hero-art animate-on-scroll" style="transition-delay: 0.2s;">
+      <div class="hero-logo-wrapper">
+        <img src="{% if site.logo %}{{ site.logo.url }}{% else %}{% static 'img/logo.jpg' %}{% endif %}"
+             alt="{{ site.site_name }}" class="hero-logo">
+      </div>
     </div>
   </div>
 </section>
 
-{# ---------- Hakkımızda + istatistik ---------- #}
+{# ---------- Hakkımızda + İstatistik ---------- #}
 <section class="section">
   <div class="container about-grid">
-    <div class="about-text">
-      <h2>{% if blocks.home_about.title %}{{ blocks.home_about.title }}{% else %}{% trans "Biz Kimiz?" %}{% endif %}</h2>
-      <p>
+    <div class="about-text animate-on-scroll">
+      <h2 class="section-title" style="text-align: left; margin-bottom: 30px;">
+        {% if blocks.home_about.title %}{{ blocks.home_about.title }}{% else %}{% trans "Biz Kimiz?" %}{% endif %}
+      </h2>
+      <div style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8;">
         {% if blocks.home_about.body %}{{ blocks.home_about.body|linebreaksbr }}{% else %}{{ site.about_short }}{% endif %}
-      </p>
+      </div>
     </div>
-    <div class="stats">
-      <div class="stat">
+    <div class="stats-grid animate-on-scroll" style="transition-delay: 0.2s;">
+      <div class="stat-card glass-panel">
+        <span class="stat-num">#25160</span>
+        <span class="stat-label">{% trans "Takım Numarası" %}</span>
+      </div>
+      <div class="stat-card glass-panel">
         <span class="stat-num">{{ member_count }}</span>
         <span class="stat-label">{% trans "Takım Üyesi" %}</span>
       </div>
-      <div class="stat">
+      <div class="stat-card glass-panel">
         <span class="stat-num">{{ achievements|length }}</span>
         <span class="stat-label">{% trans "Başarı" %}</span>
       </div>
-      <div class="stat">
+      <div class="stat-card glass-panel">
         <span class="stat-num">{{ sponsors|length }}</span>
-        <span class="stat-label">{% trans "Sponsor" %}</span>
+        <span class="stat-label">{% trans "Destekçi Sponsor" %}</span>
       </div>
     </div>
   </div>
@@ -53,22 +61,26 @@
 
 {# ---------- Öne çıkan başarılar ---------- #}
 {% if achievements %}
-<section class="section section-alt">
+<section class="section" style="background: rgba(25,25,25,0.2); border-top: 1px solid var(--border-glass); border-bottom: 1px solid var(--border-glass);">
   <div class="container">
-    <h2 class="section-title">{% trans "Öne Çıkan Başarılarımız" %}</h2>
+    <h2 class="section-title animate-on-scroll">{% trans "Öne Çıkan Başarılarımız" %}</h2>
     <div class="card-grid">
       {% for a in achievements %}
-        <article class="card">
-          {% if a.image %}<img src="{{ a.image.url }}" alt="{{ a.title }}" class="card-img">{% endif %}
+        <article class="card glass-panel animate-on-scroll" style="transition-delay: {{ forloop.counter0|add:1 }}00ms;">
+          {% if a.image %}
+          <div class="card-img-wrapper">
+            <img src="{{ a.image.url }}" alt="{{ a.title }}" class="card-img">
+          </div>
+          {% endif %}
           <div class="card-body">
-            <h3>{{ a.title }}</h3>
+            <h3 class="card-title">{{ a.title }}</h3>
             {% if a.date %}<span class="card-meta">{{ a.date|date:"Y" }}</span>{% endif %}
-            <p>{{ a.description }}</p>
+            <p class="card-desc">{{ a.description }}</p>
           </div>
         </article>
       {% endfor %}
     </div>
-    <div class="section-cta">
+    <div class="animate-on-scroll" style="text-align: center; margin-top: 60px;">
       <a class="btn btn-ghost" href="{% url 'competitions:list' %}">{% trans "Tümünü Gör" %}</a>
     </div>
   </div>
@@ -79,8 +91,8 @@
 {% if sponsors %}
 <section class="section">
   <div class="container">
-    <h2 class="section-title">{% trans "Bizi Destekleyenler" %}</h2>
-    <div class="sponsor-strip">
+    <h2 class="section-title animate-on-scroll">{% trans "Bizi Destekleyenler" %}</h2>
+    <div class="sponsor-strip animate-on-scroll" style="transition-delay: 0.2s;">
       {% for s in sponsors %}
         {% if s.url %}<a href="{{ s.url }}" target="_blank" rel="noopener" class="sponsor-item">{% else %}<span class="sponsor-item">{% endif %}
           {% if s.logo %}<img src="{{ s.logo.url }}" alt="{{ s.name }}">{% else %}<span class="sponsor-name">{{ s.name }}</span>{% endif %}
@@ -92,13 +104,13 @@
 {% endif %}
 
 {# ---------- Alt CTA ---------- #}
-<section class="cta-band">
-  <div class="container cta-inner">
+<section class="section cta-band">
+  <div class="container cta-inner animate-on-scroll">
     <h2>{% trans "Takımımıza destek olmak ister misiniz?" %}</h2>
-    <p>{% trans "Sponsorluk ve iş birliği için bizimle iletişime geçin." %}</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="{% url 'sponsors:page' %}">{% trans "Sponsor Ol" %}</a>
-      <a class="btn btn-ghost" href="{% url 'contact:contact' %}">{% trans "İletişim" %}</a>
+    <p>{% trans "Sponsorluk, mentörlük veya iş birliği için bizimle hemen iletişime geçin ve robotik geleceğini birlikte inşa edelim." %}</p>
+    <div class="hero-actions" style="justify-content: center;">
+      <a class="btn btn-primary" style="background:#000; box-shadow:none; border:1px solid rgba(255,255,255,0.2);" href="{% url 'sponsors:page' %}">{% trans "Sponsor Ol" %}</a>
+      <a class="btn btn-ghost" style="border-color: rgba(255,255,255,0.4);" href="{% url 'contact:contact' %}">{% trans "İletişim" %}</a>
     </div>
   </div>
 </section>

@@ -1,7 +1,104 @@
 {% extends "base.html" %}
 {% load i18n %}
+
 {% block title %}{% trans "İletişim" %} — {{ site.site_name|default:"Çakatech" }}{% endblock %}
+
 {% block content %}
-  {% trans "İletişim" as page_title %}
-  {% include "partials/coming_soon.html" %}
+<div class="page-header">
+  <div class="container animate-on-scroll">
+    <h1 class="page-title text-gradient">{% trans "Bizimle İletişime Geçin" %}</h1>
+    <p class="page-desc">{% trans "Sorularınız, önerileriniz veya iş birliği fırsatları için bize her zaman yazabilirsiniz." %}</p>
+  </div>
+</div>
+
+<section class="section" style="padding-top: 0;">
+  <div class="container">
+    
+    <div class="form-layout animate-on-scroll">
+      <div class="form-info-box glass-panel" style="background: linear-gradient(135deg, rgba(255,210,0,0.05), transparent);">
+        <h3 style="font-size: 2rem; margin-bottom: 40px;">{% trans "İletişim Bilgileri" %}</h3>
+        
+        {% if site.email %}
+        <div class="info-item">
+          <h4>{% trans "E-posta" %}</h4>
+          <p><a href="mailto:{{ site.email }}" style="color: var(--text-muted); font-size: 1.1rem; border-bottom: 1px dashed var(--border-glass);">{{ site.email }}</a></p>
+        </div>
+        {% endif %}
+        
+        {% if site.phone %}
+        <div class="info-item">
+          <h4>{% trans "Telefon" %}</h4>
+          <p style="color: var(--text-muted); font-size: 1.1rem;">{{ site.phone }}</p>
+        </div>
+        {% endif %}
+
+        {% if site.address %}
+        <div class="info-item">
+          <h4>{% trans "Adres" %}</h4>
+          <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">{{ site.address }}</p>
+        </div>
+        {% endif %}
+
+        <div class="info-item" style="margin-top: 60px;">
+          <h4>{% trans "Sosyal Medya" %}</h4>
+          <div class="footer-social" style="margin-top: 16px;">
+            {% if site.instagram_url %}<a href="{{ site.instagram_url }}" target="_blank" rel="noopener" class="social-icon">IG</a>{% endif %}
+            {% if site.youtube_url %}<a href="{{ site.youtube_url }}" target="_blank" rel="noopener" class="social-icon">YT</a>{% endif %}
+            {% if site.linkedin_url %}<a href="{{ site.linkedin_url }}" target="_blank" rel="noopener" class="social-icon">IN</a>{% endif %}
+            {% if site.twitter_url %}<a href="{{ site.twitter_url }}" target="_blank" rel="noopener" class="social-icon">X</a>{% endif %}
+          </div>
+        </div>
+      </div>
+      
+      <div class="glass-panel" style="padding: 40px;">
+        <form method="post" action="." class="custom-form">
+          {% csrf_token %}
+          
+          {{ form.non_field_errors }}
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+              <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+              {{ form.name }}
+              {{ form.name.errors }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+              <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+              {{ form.phone }}
+              {{ form.phone.errors }}
+            </div>
+            <div class="form-group">
+              <label for="{{ form.subject.id_for_label }}">{{ form.subject.label }}</label>
+              {{ form.subject }}
+              {{ form.subject.errors }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+            {{ form.message }}
+            {{ form.message.errors }}
+          </div>
+
+          <div style="display: none;">
+            {{ form.honeypot }}
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 18px;">
+            {% trans "Mesajı Gönder" %}
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
 {% endblock %}

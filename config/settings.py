@@ -16,7 +16,6 @@ env = environ.Env(
     DEBUG=(bool, False),
     ALLOWED_HOSTS=(list, ["127.0.0.1", "localhost"]),
     ADMIN_URL=(str, "cakatech-yonetim/"),
-    EMAIL_ENABLED=(bool, False),
     CSRF_TRUSTED_ORIGINS=(list, []),
 )
 
@@ -145,24 +144,6 @@ STORAGES = {
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# --- E-posta ----------------------------------------------------------------
-# Formlar şimdilik yalnızca DB'ye kaydeder. EMAIL_ENABLED=True olduğunda
-# (profesyonel hosting'e geçişte) bildirim e-postaları gönderilir.
-EMAIL_ENABLED = env("EMAIL_ENABLED")
-if EMAIL_ENABLED:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = env("EMAIL_HOST", default="")
-    EMAIL_PORT = env.int("EMAIL_PORT", default=587)
-    EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
-    EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
-    EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
-    DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default=EMAIL_HOST_USER)
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-
-# Form bildirimleri bu adrese gider (EMAIL_ENABLED True ise)
-CONTACT_NOTIFY_EMAIL = env("CONTACT_NOTIFY_EMAIL", default="")
 
 # --- Güvenlik (prod) --------------------------------------------------------
 if not DEBUG:
